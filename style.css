@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+*, *::before, *::after {
+	padding: 0;
+	margin: 0 auto;
+}
+
+body {
+	font-family: Raleway, sans-serif;
+	background-color: #0F0F0F;
+	color: #1E90FF;
+	font-size: 24px;
+  
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	width: 95%;
+	max-width: 40ch;
+	padding: 3em 1em;
+}
+
+.text {
+	margin-block: 2em;
+	font-size: 20px;
+	padding: 0em 1em;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+/* Effect1 */
+.effect1 {
+	font-family: Raleway, sans-serif;
+	background: 50% 100% / 50% 50% no-repeat
+				radial-gradient(ellipse at bottom, #1E90FF, transparent, transparent);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	font-size: 10vw;
+	animation: reveal 3000ms ease-in-out forwards 200ms,
+			   glow 2500ms linear infinite 2000ms;
+}
+
+@keyframes reveal {
+	80% {
+		letter-spacing: 8px;
+	}
+	100% {
+		background-size: 300% 300%;
+	}
+}
+  
+@keyframes glow {
+	40% {
+		text-shadow: 0 0 8px #1E90FF;
+	}
+}
+/* Effect1 ENDS */
+
+
+
+
+
+
+
+
+
+.effect2 {
+  display: flex;
+/*   border:1px solid red; */
+  height: 100%;
+  align-items: center;
+}
+
+svg {
+    display: block;
+    font: 10.5em 'Raleway';
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+	stroke: #1E90FF;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: #3CB371;
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #CD5C5C;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: #1E90FF;
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #3CB371;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}
+
+
+
+
+
+
+
+
+
+
+/* Btn CSS */
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 15rem;
+    height: 5rem;
+    background-color: var(--bg-btn-card);
+    transition: 0.4s;
+    border-radius: var(--card-border-radius);
+    flex-direction: column;
+    position: relative;
+}
+
+.button-container:hover {
+    transform: translateY(-5px);
+}
+/* Btn CSS ENDS */
+
+/* ImOnlyYisus Btn CSS */
+.ImOnlyYisusContainer {
+    position: relative;
+}
+
+.ImOnlyYisus-btn {
+    padding: 6px;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #CD5C5C;
+    border: none;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+.ImOnlyYisus-btn::after {
+    content: '';
+    background-color: #CD5C5C;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    height: 5%;
+    transition: 0.3s;
+}
+
+.ImOnlyYisus-btn::before {
+    content: '';
+    background-color: #CD5C5C;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 5%;
+    transition: 0.3s;
+}
+
+.ImOnlyYisus-btn:hover {
+    text-shadow: 0 0 10px #CD5C5C, 0 0 20px #CD5C5C, 0 0 30px #e60073,
+        0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+
+.ImOnlyYisus-btn:hover::after {
+    width: 100%;
+}
+
+.ImOnlyYisus-btn:hover::before {
+    width: 100%;
+}
+/* ImOnlyYisus Btn CSS ENDS */

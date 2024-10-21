@@ -1,0 +1,42 @@
+.particle-container {
+  position:absolute;
+  top:0; left:8%; bottom:0;
+  width:55%;
+  //mix-blend-mode: soft-light;
+  --timescale:0.5s;
+}
+.pt {
+  display:block;
+  position:absolute;
+  left:calc( var(--x) * 1%);
+  top:calc( var(--y) * 1% );
+  height:50px; 
+  /*border:dotted thin gray;*/
+  animation: moveUpDown calc( var(--timescale) * var(--yt) ) infinite cubic-bezier(.45,.05,.55,.95) alternate;
+  animation-delay:calc( -1s * var(--d, 0) );
+}
+.pt b{
+  display:block;
+  background:url(glowey.png);
+  background-size:contain;
+  /*border:dotted thin green; */
+  width: calc( 0.1vw * var(--w) );
+  height:calc( 0.1vw * var(--w) );
+  position:absolute;
+  opacity:var(--o, 1);
+  animation: moveRightLeft calc( var(--timescale) * var(--xt) ) infinite cubic-bezier(.45,.05,.55,.95) alternate , flicker calc( 2s * var(--xd) ) infinite alternate  cubic-bezier(.45,.05,.55,.95);
+  animation-delay:calc( -1s * var(--d, 0) ) , calc( -0.2s * var(--d, 0) );
+}
+@keyframes moveUpDown {
+  0% {}
+  100% {transform:translateY( calc(50% * var(--yd, 3))  ); } 
+}
+@keyframes moveRightLeft {
+  0% { transform:translateX(  calc(-50% * var(--xd, 3))  );}
+  100% {transform:translateX(  calc(50% * var(--xd, 3))  ); }
+}
+@keyframes flicker{
+  0% { opacity:calc( var(--o, 1) - 0.1); }
+  100% { opacity:calc( var(--o, 1) + 0.1); }
+}
+  

@@ -1,99 +1,89 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>DNSveil (A Secure DNS Client)</title>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./bg.css">
+</head>
+<body>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+<div class="content">
 
-<!-- tag -->
-<title>Secure DNS Client | Persian Subtitle Fixes</title>
-<meta name="generator" content="Jekyll v3.9.2" />
-<meta property="og:title" content="Persian Subtitle Fixes" />
-<meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://msasanmh.github.io/PersianSubtitleFixes/" />
-<meta property="og:url" content="https://msasanmh.github.io/PersianSubtitleFixes/" />
-<meta property="og:site_name" content="PersianSubtitleFixes" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Persian Subtitle Fixes" />
-<meta name="google-site-verification" content="ppxZTHRrC1v2bdcO8Vfnzm179nr-l3kV0pjnX6y5ZLs" />
+<!-- Background Effect -->
+	<div class="particle-container">
+		<!--
+		x = position y = position
+		xt = horizontal movement speed
+		yt = vertical movement speed
+		xd = horizontal movement distance
+		yd = vertical movement distance
+		w = width & height
+		d = animation delay
+		-->
+		<span style="--x:50; --y:0; --xt:13; --yt:12; --xd:2; --yd:2; --w:25;  --d:1; --o:.9;" class="pt"><b></b></span>
+		<span style="--x:16; --y:0; --xt:17; --yt:10; --xd:3; --yd:1; --w:39;  --d:6; --o:.5;" class="pt"><b></b></span>
+		<span style="--x:16; --y:0; --xt:17; --yt:10; --xd:3; --yd:3; --w:28;  --d:4; --o:.9;" class="pt"><b></b></span>
+		<span style="--x:66; --y:0; --xt:11; --yt:13; --xd:3; --yd:2; --w:38;  --d:2; --o:.9;" class="pt"><b></b></span>
+		<span style="--x:56; --y:-3; --xt:11; --yt:10; --xd:3; --yd:1; --w:58;  --d:0; --o:.9;" class="pt"><b></b></span>
+		<span style="--x:19; --y:0; --xt:17; --yt:10; --xd:3; --yd:4; --w:45;  --d:9; --o:.7;" class="pt"><b></b></span>
+		<span style="--x:49; --y:0; --xt:17; --yt:10; --xd:3; --yd:-4; --w:65;  --d:2; --o:.6;" class="pt"><b></b></span>
+		<span style="--x:20; --y:0; --xt:13; --yt:12; --xd:2; --yd:4; --w:70;  --d:8; --o:.9;" class="pt"><b></b></span>
+		<span style="--x:35; --y:3; --xt:8; --yt:16; --xd:0.5; --yd:0.8; --w:190; --d:5; --o:.7;" class="pt"><b></b></span>
+		<span style="--x:15; --y:10; --xt:18; --yt:16; --xd:0.5; --yd:1; --w:190; --d:6; --o:.9;" class="pt"><b></b></span>
+		<span style="--x:15; --y:30; --xt:9; --yt:22; --xd:0.5; --yd:1; --w:30; --d:9; --o:.4;" class="pt"><b></b></span>
+		<span style="--x:4; --y:20; --xt:10; --yt:7; --xd:1.5; --yd:1.2; --w:26; --d:12; --o:0.4;" class="pt"><b></b></span> 
+		<span style="--x:50; --y:40; --xt:16; --yt:6; --xd:4; --yd:-2; --w:70; --d:5; --o:0.3;" class="pt"><b></b></span>
+		<span style="--x:50; --y:40; --xt:16; --yt:6; --xd:1; --yd:-2; --w:170; --d:0; --o:1;" class="pt"><b></b></span>
+		<span style="--x:60; --y:40; --xt:16; --yt:6; --xd:1; --yd:2; --w:70; --d:5; --o:0.4;" class="pt"><b></b></span>
+		<span style="--x:50; --y:50; --xt:12; --yt:7; --xd:1; --yd:1.2; --w:100; --d:7; --o:0.4;" class="pt"><b></b></span>
+		<span style="--x:70; --y:40; --xt:4; --yt:1; --xd:0.5; --yd:.2; --w:100; --d:7; --o:0.4;" class="pt"><b></b></span>
+		<span style="--x:2; --y:50; --xt:10; --yt:7; --xd:1; --yd:1.2; --w:20; --d:7; --o:0.4;" class="pt"><b></b></span>
+		<span style="--x:4; --y:50; --xt:10; --yt:7; --xd:1.5; --yd:1.2; --w:16; --d:12; --o:0.4;" class="pt"><b></b></span> 
+		<span style="--x:10; --y:40; --xt:10; --yt:17; --xd:2; --yd:1.2; --w:28; --d:7; --o:0.4;" class="pt"><b></b></span>
+		<span style="--x:70; --y:60; --xt:12; --yt:6; --xd:2; --yd:2; --w:36; --d:5; --o:0.7;" class="pt"><b></b></span>
+		<span style="--x:10; --y:60; --xt:12; --yt:16; --xd:-1; --yd:2.2; --w:80; --d:5; --o:0.7;" class="pt"><b></b></span>
+		<span style="--x:10; --y:70; --xt:12; --yt:26; --xd:-1; --yd:2.2; --w:110; --d:5; --o:0.7;" class="pt"><b></b></span>
+		<span style="--x:19; --y:70; --xt:12; --yt:26; --xd:-1; --yd:3.2; --w:20; --d:5; --o:0.7;" class="pt"><b></b></span>
+	</div>
+<!-- Background Effect ENDS -->
 
-  </head>
+	<div class="effect2">
+		<svg viewBox="0 0 960 300">
+			<symbol id="s-text">
+				<text text-anchor="middle" x="50%" y="80%">DNSveil</text>
+			</symbol>
+			<g class = "g-ants">
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+			</g>
+		</svg>
+	</div>
 
-  <body>
+<!--
+	<div class="effect1">
+		DNSveil
+	</div>
+-->
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-            <a id="forkme_banner" href="https://github.com/msasanmh/">View on GitHub</a>
-          <h1 id="project_title">MSasanMH</h1>
-          <h2 id="project_tagline"></h2>
-        </header>
-    </div>
+	<p class="text">
+		<font color="#3CB371">
+			A DNS Client Supporting DNSCrypt, Anonymized DNSCrypt, DoH, DoT, UDP And TCP.
+		</font>
+	</p>
+  
+	<div class="button-container">
+		<div class="ImOnlyYisusContainer">
+			<a href="https://github.com/msasanmh/DNSveil">
+				<button class="ImOnlyYisus-btn" href="https://github.com/ImOnlyYisus">Project Page</button>
+			</a>
+		</div>
+	</div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-		
-		
-		
-    <h2>
-      <a href="https://github.com/msasanmh/SecureDNSClient" title="Custom Controls (Windows Forms)">Secure DNS Client</a>
-    </h2>
-    <p>
-      <img src="https://user-images.githubusercontent.com/1586825/220970918-43face7b-3825-4b8e-98e5-a38122c7199a.jpg" alt="Secure DNS Client" />
-    </p>
-    <hr />
-    <h2 id="persian-subtitle-fixes">
-      <a href="https://github.com/msasanmh/PersianSubtitleFixes" title="Persian Subtitle Fixes">Persian Subtitle Fixes</a>
-    </h2>
-    <p>Its a free software to enhance Persian subtitles.</p>
-    <p>
-      <strong>Features</strong>
-    </p>
-    <ul>
-      <li>Dialog Hyphen Fix</li>
-      <li>Comma Fixes</li>
-      <li>Dot Fixes</li>
-      <li>Exclamation Mark Fixes</li>
-      <li>Question Mark Fixes</li>
-      <li>Remove Unneeded Spaces</li>
-      <li>Parentheses Fixes</li>
-      <li>Double-Quotes Fixes</li>
-      <li>Dash Fixes</li>
-      <li>Change Arabic Char to Persian</li>
-      <li>Space to Invisible Space</li>
-      <li>and more.</li>
-    </ul>
-    <p>
-      <img src="https://user-images.githubusercontent.com/1586825/165562028-1dbf1e44-8fb1-4404-a110-54ec6582b99d.jpg" alt="Sample1" />
-    </p>
-    <p>
-      <a href="https://github.com/msasanmh/PersianSubtitleFixes/releases/">
-        <strong>Download</strong>
-      </a>
-    </p>
-    <hr />
-    <p>
-      <a href="https://github.com/msasanmh/plugins/tree/master/PersianErrors" title="Persian Subtitle Fixes Plugin">Persian Subtitle Fixes Plugin</a> for <a href="https://www.nikse.dk/subtitleedit" title="SubtitleEdit">SubtitleEdit</a></p>
-    <p>
-      <strong>
-        <a href="https://github.com/SubtitleEdit/plugins/releases" title="Download DLL">Download DLL</a>
-      </strong>
-    </p>
-		
-		
-		
-      </section>
-    </div>
+</div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Persian Subtitle Fixes maintained by <a href="https://github.com/msasanmh">msasanmh</a></p>
-      </footer>
-    </div>
-  </body>
+</body>
 </html>
