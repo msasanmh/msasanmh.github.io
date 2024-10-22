@@ -3,29 +3,48 @@
 *, *::before, *::after {
 	padding: 0;
 	margin: 0 auto;
+	font-family: Raleway, sans-serif;
 }
 
 body {
-	font-family: Raleway, sans-serif;
+	background-color: #0F0F0F;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	font-size: 2vw;
 	background-color: #0F0F0F;
 	color: #1E90FF;
-	font-size: 24px;
-  
+	width: 60%;
+	max-width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.content {
-	width: 95%;
-	max-width: 40ch;
-	padding: 3em 1em;
+	
+	/* Vertically Center */
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	/* Solves a problem in which the content is being cut when the div is smaller than its' wrapper: */
+	max-width: 100%;
+	max-height: 100%;
+	overflow: auto;
+	/* Vertically Center ENDS */
 }
 
 .text {
-	margin-block: 2em;
-	font-size: 20px;
-	padding: 0em 1em;
+	display: flex;
+	width: 92%;
+	max-width: 92%;
+	height: 100%;
+	max-height: 100%;
+	min-height: 6vw;
+	padding: 0em 0em 0em 0em;
+	margin: 2em 0em 2em 0em;
+	overflow: auto;
 }
 
 .bold {
@@ -34,7 +53,6 @@ body {
 
 /* Effect1 */
 .effect1 {
-	font-family: Raleway, sans-serif;
 	background: 50% 100% / 50% 50% no-repeat
 				radial-gradient(ellipse at bottom, #1E90FF, transparent, transparent);
 	-webkit-background-clip: text;
@@ -61,27 +79,14 @@ body {
 }
 /* Effect1 ENDS */
 
-
-
-
-
-
-
-
-
+/* Effect2 */
 .effect2 {
-  display: flex;
-/*   border:1px solid red; */
-  height: 100%;
-  align-items: center;
-}
-
-svg {
-    display: block;
-    font: 10.5em 'Raleway';
-    width: 960px;
-    height: 100%;
-    margin: 0 auto;
+	display: flex;
+/* border:1px solid red; */
+	width: 100%;
+	height: 100%;
+	font-size: 250px;
+	align-items: center;
 }
 
 .text-copy {
@@ -121,23 +126,17 @@ svg {
 @keyframes stroke-offset{
 	100% {stroke-dashoffset: -35%;}
 }
-
-
-
-
-
-
-
-
-
+/* Effect2 ENDS */
 
 /* Btn CSS */
 .button-container {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 15rem;
+    width: 100%;
     height: 5rem;
+	padding: 0em 0em 0em 0em;
+	margin: 0em 0em 1em 0em;
     background-color: var(--bg-btn-card);
     transition: 0.4s;
     border-radius: var(--card-border-radius);
@@ -145,9 +144,7 @@ svg {
     position: relative;
 }
 
-.button-container:hover {
-    transform: translateY(-5px);
-}
+
 /* Btn CSS ENDS */
 
 /* ImOnlyYisus Btn CSS */
@@ -157,9 +154,9 @@ svg {
 
 .ImOnlyYisus-btn {
     padding: 6px;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;
-    font-size: 20px;
+    padding-bottom: 0.7em;
+    padding-top: 0.7em;
+    font-size: 2vw;
     text-transform: uppercase;
     color: #CD5C5C;
     border: none;
@@ -202,3 +199,45 @@ svg {
     width: 100%;
 }
 /* ImOnlyYisus Btn CSS ENDS */
+
+/* For Portrait Screen */
+@media (max-aspect-ratio: 1/1) {
+	.container {
+		display: flex;
+		flex-direction: column;
+		font-size: 2vw;
+		font-family: Raleway, sans-serif;
+		font-size: 34px;
+		background-color: #0F0F0F;
+		color: #1E90FF;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		/* Vertically Center */
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		/* Solves a problem in which the content is being cut when the div is smaller than its' wrapper: */
+		max-width: 100%;
+		max-height: 100%;
+		overflow: auto;
+		/* Vertically Center ENDS */
+	}
+	
+	.ImOnlyYisus-btn {
+		padding: 6px;
+		padding-bottom: 0.7em;
+		padding-top: 0.7em;
+		font-size: 2vh;
+		text-transform: uppercase;
+		color: #CD5C5C;
+		border: none;
+		background-color: transparent;
+		transition: 0.3s;
+	}
+
+}
