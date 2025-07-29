@@ -1,0 +1,76 @@
+// AgnosticServer DNS //
+
+== Stop And Disable System DNS Service (To Free Port 53):
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+
+== Install Remote:
+bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/install-remote.sh)
+
+== Install Local:
+sudo chmod +x install.sh
+./install.sh
+
+== Modify Settings:
+sudo nano /opt/AgnosticServer/AgnosticServer.config
+
+== Modify DNS Servers:
+sudo nano /opt/AgnosticServer/dnss.txt
+
+== Enable On Boot:
+sudo systemctl enable AgnosticServer
+
+== Start:
+sudo systemctl start AgnosticServer
+
+== Restart:
+sudo systemctl restart AgnosticServer
+
+== Status (App Log):
+sudo systemctl status AgnosticServer
+
+== View Journal Log:
+journalctl -u AgnosticServer.service -f
+
+== View Active Services:
+systemctl list-units --type=service
+
+== Uninstall Remote:
+bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/uninstall.sh)
+
+== Uninstall Local:
+sudo chmod +x uninstall.sh
+./uninstall.sh
+
+Enable And Start System DNS Service:
+sudo systemctl enable systemd-resolved
+sudo systemctl start systemd-resolved
+
+===============================================================================
+About Port 53:
+
+== Disable System DNS Service (To Free Port 53):
+sudo systemctl stop systemd-resolved		Undo: sudo systemctl start systemd-resolved
+sudo systemctl disable systemd-resolved		Undo: sudo systemctl enable systemd-resolved
+sudo systemctl mask systemd-resolved		Undo: sudo systemctl unmask systemd-resolved
+
+== Check Port 53 Connections:
+sudo ss -tulpn | grep :53
+
+== Get NicNames:
+sudo resolvectl
+
+== Set DNS:
+sudo resolvectl dns <NicName> 127.0.0.1
+sudo resolvectl domain <NicName> ~.
+
+++ Edit /etc/resolv.conf (Backup First):
+nameserver 127.0.0.1
+options edns0 trust-ad
+search local
+
+== Unset DNS:
+sudo resolvectl revert -i all
+
+++ Edit /etc/resolv.conf (Use Backup) Or:
+nameserver 8.8.8.8

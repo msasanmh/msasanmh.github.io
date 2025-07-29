@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+
+SERVICE_NAME="AgnosticServer"
+APP_DIR="/opt/$SERVICE_NAME"
+SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME.service"
+REPO_URL="https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/$SERVICE_NAME"
+
+# Stop the service if it's already installed
+if systemctl list-units --type=service | grep -q "$SERVICE_NAME.service"; then
+    echo "⛔ Stopping existing service..."
+	sudo systemctl stop "$SERVICE_NAME.service"
+fi
+
+echo "[+] Creating app directory..."
+sudo mkdir -p "$APP_DIR"
+
+echo "[+] Downloading files..."
+sudo curl -fsSL "$REPO_URL/$SERVICE_NAME" -o "$APP_DIR/$SERVICE_NAME"
+sudo curl -fsSL "$REPO_URL/$SERVICE_NAME.config" -o "$APP_DIR/$SERVICE_NAME.config"
+sudo curl -fsSL "$REPO_URL/dnss.txt" -o "$APP_DIR/dnss.txt"
+sudo curl -fsSL "$REPO_URL/$SERVICE_NAME.service" -o "$SERVICE_FILE"
+
+echo "[+] Setting permitions..."
+sudo chmod +x "$APP_DIR/$SERVICE_NAME"
+sudo chmod +x "$SERVICE_FILE"
+
+echo "[+] Reloading systemd daemon..."
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+
+echo "[+] Enabling and starting service..."
+sudo systemctl enable "$SERVICE_NAME.service"
+sudo systemctl start "$SERVICE_NAME.service"
+
+echo "[✓] Installation complete. Use 'systemctl status $SERVICE_NAME' to check status."
