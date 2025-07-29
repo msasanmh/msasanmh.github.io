@@ -64,6 +64,7 @@ sudo systemctl enable systemd-resolved
 sudo systemctl start systemd-resolved
 
 Restore backup for /etc/resolv.conf
+sudo cp /etc/resolv.conf.backup /etc/resolv.conf
 
 ===============================================================================
 About Port 53:

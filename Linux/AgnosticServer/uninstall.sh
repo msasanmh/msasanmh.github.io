@@ -58,4 +58,12 @@ else
     echo "⚠️ systemd-resolved.service not found on this system."
 fi
 
+# Restore backup file /etc/resolv.conf.backup
+if [ -f /etc/resolv.conf.backup ]; then
+    echo "Restoring original resolv.conf from backup..."
+	sudo cp /etc/resolv.conf.backup /etc/resolv.conf
+else
+    echo "No backup resolv.conf found. Skipping restore."
+fi
+
 echo "[✓] $SERVICE_NAME successfully uninstalled."
