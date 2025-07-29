@@ -1,5 +1,8 @@
 // AgnosticServer DNS //
 
+== Install .NET 6 Runtime:
+sudo apt install dotnet-runtime-6.0
+
 == Stop And Disable System DNS Service (To Free Port 53):
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
