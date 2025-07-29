@@ -1,0 +1,13 @@
+[Unit]
+Description=Agnostic DNS And Proxy Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart="/opt/AgnosticServer/AgnosticServer" Load Start SetDNS
+WorkingDirectory=/opt/AgnosticServer
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
