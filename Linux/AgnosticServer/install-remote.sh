@@ -28,6 +28,13 @@ echo "[+] Setting permitions..."
 sudo chmod +x "$APP_DIR/$SERVICE_NAME"
 sudo chmod +x "$SERVICE_FILE"
 
+# Fix hostname resolution issue
+CURRENT_HOSTNAME=$(hostname)
+if ! grep -q "$CURRENT_HOSTNAME" /etc/hosts; then
+    echo "Fixing /etc/hosts for hostname resolution..."
+    echo "127.0.1.1 $CURRENT_HOSTNAME" | sudo tee -a /etc/hosts > /dev/null
+fi
+
 echo "[+] Reloading systemd daemon..."
 sudo systemctl daemon-reexec
 sudo systemctl daemon-reload

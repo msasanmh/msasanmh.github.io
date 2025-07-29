@@ -33,4 +33,23 @@ if [ -d "$APP_DIR" ]; then
     sudo rm -rf "$APP_DIR"
 fi
 
+# Enable System DNS: Check if systemd-resolved service exists
+if systemctl list-unit-files | grep -q "systemd-resolved.service"; then
+    echo "🔍 Checking systemd-resolved status..."
+
+    # Enable it if it's disabled
+    if ! systemctl is-enabled --quiet systemd-resolved.service; then
+        echo "✅ Enabling systemd-resolved.service..."
+        sudo systemctl enable systemd-resolved.service
+    fi
+
+    # Start it if it's not running
+    if ! systemctl is-active --quiet systemd-resolved.service; then
+        echo "▶️ Starting systemd-resolved.service..."
+        sudo systemctl start systemd-resolved.service
+    fi
+else
+    echo "⚠️ systemd-resolved.service not found on this system."
+fi
+
 echo "[✓] $SERVICE_NAME successfully uninstalled."
