@@ -59,12 +59,15 @@ bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/
 sudo chmod +x uninstall.sh
 ./uninstall.sh
 
-Enable And Start System DNS Service:
+Enable And Start System DNS Service (Included in uninstall.sh):
 sudo systemctl enable systemd-resolved
 sudo systemctl start systemd-resolved
 
-Restore backup for /etc/resolv.conf
+Restore backup for /etc/resolv.conf (Included in uninstall.sh)
 sudo cp /etc/resolv.conf.backup /etc/resolv.conf
+
+Restart System DNS Service
+sudo systemctl stop systemd-resolved
 
 ===============================================================================
 About Port 53:
