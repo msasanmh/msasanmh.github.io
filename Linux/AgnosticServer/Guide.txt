@@ -1,18 +1,36 @@
 // AgnosticServer DNS //
 
+========== Install ==========
+
 == Install .NET 6 Runtime:
 sudo apt install dotnet-runtime-6.0
+
+== Install Remote:
+bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/install-remote.sh)
 
 == Stop And Disable System DNS Service (To Free Port 53):
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
 
-== Install Remote:
-bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/install-remote.sh)
-
 == Install Local:
 sudo chmod +x install.sh
 ./install.sh
+
+== Restart:
+sudo systemctl restart AgnosticServer
+
+== Status (App Log):
+sudo systemctl status AgnosticServer
+
+== Lookup For A Domain To Test:
+dig @127.0.0.1 -p 53 google.com
+
+== Allow Port 53 Firewall For Ubuntu:
+sudo ufw allow 53/udp
+sudo ufw allow 53/tcp
+sudo ufw reload
+
+========== Manage ==========
 
 == Modify Settings:
 sudo nano /opt/AgnosticServer/AgnosticServer.config
@@ -26,17 +44,13 @@ sudo systemctl enable AgnosticServer
 == Start:
 sudo systemctl start AgnosticServer
 
-== Restart:
-sudo systemctl restart AgnosticServer
-
-== Status (App Log):
-sudo systemctl status AgnosticServer
-
 == View Journal Log:
 journalctl -u AgnosticServer.service -f
 
 == View Active Services:
 systemctl list-units --type=service
+
+========== Uninstall ==========
 
 == Uninstall Remote:
 bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/uninstall.sh)
@@ -48,6 +62,8 @@ sudo chmod +x uninstall.sh
 Enable And Start System DNS Service:
 sudo systemctl enable systemd-resolved
 sudo systemctl start systemd-resolved
+
+Restore backup for /etc/resolv.conf
 
 ===============================================================================
 About Port 53:
@@ -77,3 +93,8 @@ sudo resolvectl revert -i all
 
 ++ Edit /etc/resolv.conf (Use Backup) Or:
 nameserver 8.8.8.8
+
+== Check If Port 53 Is Not Blocked At Provider Level:
+sudo apt install tcpdump
+sudo tcpdump -n udp port 53
+If You See No Output, Then UDP Is Blocked At Provider Level.
