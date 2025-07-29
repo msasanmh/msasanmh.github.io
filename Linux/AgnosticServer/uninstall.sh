@@ -33,6 +33,12 @@ if [ -d "$APP_DIR" ]; then
     sudo rm -rf "$APP_DIR"
 fi
 
+# Remove hostname line if we added it
+if grep -qE "^127\.0\.1\.1\s+$CURRENT_HOSTNAME$" /etc/hosts; then
+    echo "Removing hostname entry from /etc/hosts..."
+    sudo sed -i "/^127\.0\.1\.1\s\+$CURRENT_HOSTNAME$/d" /etc/hosts
+fi
+
 # Enable System DNS: Check if systemd-resolved service exists
 if systemctl list-unit-files | grep -q "systemd-resolved.service"; then
     echo "🔍 Checking systemd-resolved status..."
