@@ -12,6 +12,9 @@ if systemctl list-units --type=service | grep -q "$SERVICE_NAME.service"; then
 	sudo systemctl stop "$SERVICE_NAME.service"
 fi
 
+echo "[+] Installing .NET 6 Runtime..."
+sudo apt install dotnet-runtime-6.0
+
 echo "[+] Creating app directory..."
 sudo mkdir -p "$APP_DIR"
 
