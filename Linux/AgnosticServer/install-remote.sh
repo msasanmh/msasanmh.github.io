@@ -22,6 +22,7 @@ echo "[+] Downloading files..."
 sudo curl -fsSL "$REPO_URL/$SERVICE_NAME" -o "$APP_DIR/$SERVICE_NAME"
 sudo curl -fsSL "$REPO_URL/$SERVICE_NAME.config" -o "$APP_DIR/$SERVICE_NAME.config"
 sudo curl -fsSL "$REPO_URL/dnss.txt" -o "$APP_DIR/dnss.txt"
+sudo curl -fsSL "$REPO_URL/dnss5353.txt" -o "$APP_DIR/dnss5353.txt"
 sudo curl -fsSL "$REPO_URL/$SERVICE_NAME.service" -o "$SERVICE_FILE"
 
 echo "[+] Setting permitions..."

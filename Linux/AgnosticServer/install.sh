@@ -19,6 +19,7 @@ sudo mkdir -p "$APP_DIR"
 sudo cp ./$SERVICE_NAME "$APP_DIR/"
 sudo cp ./$SERVICE_NAME.config "$APP_DIR/"
 sudo cp ./dnss.txt "$APP_DIR/"
+sudo cp ./dnss5353.txt "$APP_DIR/"
 sudo cp ./$SERVICE_NAME.service "$SERVICE_FILE"
 
 echo "[+] Setting permitions..."

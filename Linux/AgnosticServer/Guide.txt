@@ -28,6 +28,8 @@ dig @127.0.0.1 -p 53 google.com
 == Allow Port 53 Firewall For Ubuntu:
 sudo ufw allow 53/udp
 sudo ufw allow 53/tcp
+sudo ufw allow 5353/udp
+sudo ufw allow 5353/tcp
 sudo ufw reload
 
 ========== Manage ==========
@@ -35,8 +37,11 @@ sudo ufw reload
 == Modify Settings:
 sudo nano /opt/AgnosticServer/AgnosticServer.config
 
-== Modify DNS Servers:
+== Modify DNS Servers For Port 53:
 sudo nano /opt/AgnosticServer/dnss.txt
+
+== Modify DNS Servers For Port 5353:
+sudo nano /opt/AgnosticServer/dnss5353.txt
 
 == Enable On Boot:
 sudo systemctl enable AgnosticServer
