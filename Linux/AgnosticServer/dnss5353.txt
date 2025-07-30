@@ -1,0 +1,6 @@
+https://dns.google/dns-query
+https://every1dns.com/dns-query
+https://dns.cloudflare.com/dns-query
+https://doh.umbrella.com/dns-query
+https://dns.quad9.net/dns-query
+https://dns11.quad9.net/dns-query
