@@ -1,6 +1,12 @@
 // AgnosticServer DNS //
 
-========== Install ==========
+== Install:
+bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/install-remote.sh)
+
+== Uninstall:
+bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/uninstall.sh)
+
+========== Manual Install ==========
 
 == Install .NET 6 Runtime:
 sudo apt install dotnet-runtime-6.0
@@ -55,7 +61,7 @@ journalctl -u AgnosticServer.service -f
 == View Active Services:
 systemctl list-units --type=service
 
-========== Uninstall ==========
+========== Manual Uninstall ==========
 
 == Uninstall Remote:
 bash <(curl -fsSL https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/Linux/AgnosticServer/uninstall.sh)
