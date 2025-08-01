@@ -23,6 +23,7 @@ if systemctl list-units --type=service | grep -q "$SERVICE_NAME.service"; then
 		if ! systemctl is-active --quiet systemd-resolved.service; then
 			echo "▶️ Starting systemd-resolved.service..."
 			sudo systemctl start systemd-resolved.service
+			sudo systemctl restart systemd-resolved.service
 		fi
 	else
 		echo "⚠️ systemd-resolved.service not found on this system."
