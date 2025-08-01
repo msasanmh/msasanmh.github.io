@@ -10,6 +10,18 @@ REPO_URL="https://github.com/msasanmh/msasanmh.github.io/raw/refs/heads/master/L
 if systemctl list-units --type=service | grep -q "$SERVICE_NAME.service"; then
     echo "⛔ Stopping existing service..."
 	sudo systemctl stop "$SERVICE_NAME.service"
+	
+	# Restore backup file /etc/resolv.conf.backup
+	if [ -f /etc/resolv.conf.backup ]; then
+		echo "Restoring original resolv.conf from backup..."
+		sudo cp /etc/resolv.conf.backup /etc/resolv.conf
+		echo "[+] Reloading systemd daemon..."
+		sudo systemctl daemon-reexec
+		sudo systemctl daemon-reload
+	else
+		echo "No backup resolv.conf found. Skipping restore."
+	fi
+	
 	# Enable system DNS: Check if systemd-resolved service exists
 	if systemctl list-unit-files | grep -q "systemd-resolved.service"; then
 		echo "🔍 Checking systemd-resolved status..."
@@ -31,17 +43,6 @@ if systemctl list-units --type=service | grep -q "$SERVICE_NAME.service"; then
 		
 	else
 		echo "⚠️ systemd-resolved.service not found on this system."
-	fi
-	
-	# Restore backup file /etc/resolv.conf.backup
-	if [ -f /etc/resolv.conf.backup ]; then
-		echo "Restoring original resolv.conf from backup..."
-		sudo cp /etc/resolv.conf.backup /etc/resolv.conf
-		echo "[+] Reloading systemd daemon..."
-		sudo systemctl daemon-reexec
-		sudo systemctl daemon-reload
-	else
-		echo "No backup resolv.conf found. Skipping restore."
 	fi
 	
 fi
