@@ -37,6 +37,7 @@ if systemctl list-units --type=service | grep -q "$SERVICE_NAME.service"; then
 			sudo systemctl start systemd-resolved.service
 		fi
 		
+		# Restart
 		echo "▶️ Restarting systemd-resolved.service..."
 		sudo systemctl restart systemd-resolved.service
 		

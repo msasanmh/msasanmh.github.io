@@ -39,6 +39,14 @@ if grep -qE "^127\.0\.1\.1\s+$CURRENT_HOSTNAME$" /etc/hosts; then
     sudo sed -i "/^127\.0\.1\.1\s\+$CURRENT_HOSTNAME$/d" /etc/hosts
 fi
 
+# Restore backup file /etc/resolv.conf.backup
+if [ -f /etc/resolv.conf.backup ]; then
+    echo "Restoring original resolv.conf from backup..."
+	sudo cp /etc/resolv.conf.backup /etc/resolv.conf
+else
+    echo "No backup resolv.conf found. Skipping restore."
+fi
+
 # Enable System DNS: Check if systemd-resolved service exists
 if systemctl list-unit-files | grep -q "systemd-resolved.service"; then
     echo "🔍 Checking systemd-resolved status..."
@@ -54,16 +62,13 @@ if systemctl list-unit-files | grep -q "systemd-resolved.service"; then
         echo "▶️ Starting systemd-resolved.service..."
         sudo systemctl start systemd-resolved.service
     fi
+	
+	# Restart
+	echo "▶️ Restarting systemd-resolved.service..."
+	sudo systemctl restart systemd-resolved.service
+	
 else
     echo "⚠️ systemd-resolved.service not found on this system."
-fi
-
-# Restore backup file /etc/resolv.conf.backup
-if [ -f /etc/resolv.conf.backup ]; then
-    echo "Restoring original resolv.conf from backup..."
-	sudo cp /etc/resolv.conf.backup /etc/resolv.conf
-else
-    echo "No backup resolv.conf found. Skipping restore."
 fi
 
 echo "[✓] $SERVICE_NAME successfully uninstalled."

@@ -97,9 +97,6 @@ nameserver 127.0.0.1
 options edns0 trust-ad
 search local
 
-== Unset DNS:
-sudo resolvectl revert -i all
-
 ++ Edit /etc/resolv.conf (Use Backup) Or:
 nameserver 8.8.8.8
 
