@@ -49,6 +49,9 @@ sudo nano /opt/AgnosticServer/dnss.txt
 == Modify DNS Servers For Port 5353:
 sudo nano /opt/AgnosticServer/dnss5353.txt
 
+== View App Log:
+sudo nano /opt/AgnosticServer/AgnosticServer.log
+
 == Enable On Boot:
 sudo systemctl enable AgnosticServer
 
